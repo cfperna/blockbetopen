@@ -1,0 +1,12 @@
+{
+  "name": "EthBlockBet2",
+  "private": true,
+  "scripts": {
+    "start": "meteor run"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.0.0-beta.36",
+    "meteor-node-stubs": "^0.3.2",
+    "poll-tx-receipt": "^1.0.0"
+  }
+}

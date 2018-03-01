@@ -1,0 +1,123 @@
+<head>
+  <title>EthBlockBet ubet12.sol</title>
+</head>
+
+<body>
+  <h1>Welcome to NFL betting on the Ethereum Block Chain!</h1>
+
+
+  {{> hello}}
+  {{> betsP2}}
+  {{> info}}
+  {{> makebet}}
+  {{> gameScores}}
+
+</body>
+
+
+
+<template name="hello">
+
+  <h3>You have <span style="color:red;font-weight:bold" >{{balance}} {{TemplateVar.get "balance"}}</span>
+     of Ether in your wallet: <span style="color:red">{{wAddress}} {{TemplateVar.get "wAddress"}} </span> availabe to wager.</h3>
+</template>
+
+<template name="betsP2">
+  <h2> Bets Placed</h2>
+    <table>
+      <tr>
+        <th> Bet #</th>
+        <th>Game #</th>
+        <th>Team</th>
+        <th>Amout Wagered</th>
+        <th>Amount Coverd</th>
+        <th>Game Played</th>
+        <th>Amount Paid off</th>
+        <th>Fee Paid</th>
+
+      </tr>
+      {{#each FavGame}}
+        <tr>
+          <td>{{Bid}}</td>
+          <td>{{Game}}</td>
+          <td>{{Team}}</td>
+          <td>{{BetAmount}}</td>
+          <td>{{BetAmtCvd}}</td>
+          <td>{{Played}}</td>
+          <td>{{AmtPaid}}</td>
+          <td>{{Fee}}</td>
+
+        </tr>
+      {{/each}}
+
+    </table>
+  <hr>
+</template>
+
+
+<template name="info">
+
+  <h2> Bets Available</h2>
+<table>
+  <tr>
+    <th> Game #</th>
+    <th>Gamee <br>Played</th>
+    <th> Favorite</th>
+    <th> Favorite <br> Sore</th>
+    <th> Underdog</th>
+    <th> Underdog <br> Sore</th>
+    <th> Spread</th>
+    <th>Totol Ether on <br> Favorite </th>
+    <th>Total Ether on <br> Underdog </th>
+
+  </tr>
+  {{#each game}}
+  <tr>
+    <td> {{GameNum}}</td>
+    <td>{{GamePlayed}}</td>
+    <td>{{Favorite}}</td>
+    <td>{{FavScore}}</td>
+    <td>{{Underdog}}</td>
+    <td>{{DogScore}}</td>
+    <td>{{Spread}}</td>
+    <td>{{FavTotBets}}</td>
+    <td>{{DogTotBets}}</td>
+
+
+      </tr>
+  {{/each}}
+
+
+</table>
+
+        <hr>
+</template>
+
+<template name="makebet">
+      <h1> Let's make a bet,</h1>
+        <form class="placebet" >
+          NFL Game number: <input type="number" id="gNum" >
+          Wager Bet wager: <input type="number" id="betAmt" step=".0001">
+          Favorite or Dog_Team? <input list="favdog" name="gChoice">
+            <datalist id="favdog">
+              <option value="Favorite"></option>
+              <option value="Underdog"></option>
+              </datalist>
+          <input type="submit" name="submit" value="submit">
+        </form>
+
+      <hr>
+
+</template>
+
+<template name="gameScores">
+  <h1> Enter Game Results, this will pay the Winners!</h1>
+    <form class="gameResults" >
+      NFL Game number: <input type="number" id="gNum" >
+      Favorite Score: <input type="number" name="FavScore" >
+      Underdog Score: <input type="number" name="DogScore" >
+      <input type="submit" name="submit" value="submit">
+    </form>
+
+  <hr>
+</template>
